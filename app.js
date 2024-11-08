@@ -84,38 +84,6 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.curruser = req.user;
     next();
-<<<<<<< HEAD
-=======
-})
-
-// app.get("/",(req,res)=>{
-// res.send("hello ji");
-// });
-
-app.use("/",list);
-app.use("/:id/reviews",review_routes);
-app.use("/",user_route);
-
-// app.all("*",(req,res,next)=>{
-// next(new expresserror(404,"page not found.."));
-// });
-
-// const validateReview = (req, res, next) => {
-//     let { error } = reviewSchema.validate(req.body);
-//     if (error) {
-//         let errmsg = error.details.map((e1) => e1.message).join(",");
-//         throw new expresserror(404, errmsg);
-//     } else {
-//         next();
-//     }
-// };
-
-
-
-const port = process.env.PORT || 3003;
-app.listen(port, () => {
-    console.log(`${port} port is started`);
->>>>>>> 487f10843b94a8db1b68fcdfb36c16be0c3f7ada
 });
 
 // रूट्स सेटअप
