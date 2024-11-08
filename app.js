@@ -99,6 +99,10 @@ app.use((req,res,next)=>{
     next();
 })
 
+app.get("/",(req,res)=>{
+res.send("hello ji");
+});
+
 app.use("/listing",list);
 app.use("/listings/:id/reviews",review_routes);
 app.use("/",user_route);
