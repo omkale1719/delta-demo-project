@@ -120,7 +120,7 @@ app.use("/",user_route);
 
 
 
-app.listen(3003,()=>{
-    console.log("3003 port is started");
+app.listen(port, () => {
+    console.log(`${port} port is started`);
 });
 
