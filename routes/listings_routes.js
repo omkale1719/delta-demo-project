@@ -38,7 +38,7 @@ router
     ); // Delete route
 
 // Index route
-router.get("/", listingcontroler.index);
+router.get("", listingcontroler.index);
 
 // Render update route form
 router.get("/:id/edit", isLoggedin, isowner, listingcontroler.renderupdateform);
