@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Message</title>
+    <style>
+        .flash-container {
+            width: 100%;
+            height: 60px; /* Fixed height for the flash container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .flash-message {
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            max-width: 900px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 1;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Flash message styles */
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .flash-message.hidden {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .flash-message .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #155724;
+            border: none;
+            background: none;
+        }
+
+        /* Keyframes for smooth fade-in effect */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Flash message container with a fixed height -->
+    <div class="flash-container">
+        <% if (success) { %>
+            <div class="flash-message success" id="flashMessage">
+                <span><%= success %></span>
+                <button class="close-btn" onclick="closeFlashMessage()">×</button>
+            </div>
+        <% } else { %>
+            <!-- Empty container to reserve space when no flash message is present -->
+            <div class="flash-message hidden" id="flashMessage"></div>
+        <% } %>
+    </div>
+
+    <script>
+        function closeFlashMessage() {
+            const flashMessage = document.getElementById("flashMessage");
+            flashMessage.classList.add("hidden");
+            // Remove element from DOM after transition for no space taken
+            setTimeout(() => flashMessage.remove(), 500);
+        }
+    </script>
+</body>
+</html>
