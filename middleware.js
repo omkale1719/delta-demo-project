@@ -18,13 +18,13 @@ next();
 };
 
 module.exports.isowner = async (req, res, next) => {
-    let { id } = req.params;
-    let listing = await Listing.findById(id);
+    let { _id } = req.params;
+    let listing = await Listing.findById(_id);
     
     // Check if the current user is the owner
     if (!listing.owner.equals(res.locals.curruser._id)) {
         req.flash("success", "You don't have permission to do that.");
-        return res.redirect(`/listing/${id}`);
+        return res.redirect(`/${_id}`);
     }
 
     // If the user is the owner, proceed to the next middleware or route handler

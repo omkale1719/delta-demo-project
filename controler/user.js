@@ -24,7 +24,7 @@ module.exports.signupfunctinality =async (req, res) => {
 
               // Flash success message and redirect to listing
         req.flash("success", "Welcome to Wenderlust");
-        res.redirect("/listing");
+        res.redirect("/");
         });
         
     } catch (e) {
@@ -47,7 +47,7 @@ module.exports.renderloginform=(req, res) => {
 
 module.exports.loginfunctionality=async (req,res)=>{
     req.flash("success","welcome back to wenderlust !");
-    let redirectUrl=res.locals.redirectUrl || "/listing";
+    let redirectUrl=res.locals.redirectUrl || "/";
     res.redirect(redirectUrl);
 }
 
@@ -57,6 +57,6 @@ module.exports.logout=(req,res,next)=>{
             return next(err);
         }
         req.flash("success","logout successfully");
-        res.redirect("/listing");
+        res.redirect("/");
     });
 }

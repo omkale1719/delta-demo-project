@@ -18,7 +18,7 @@
         <% if (allListings && allListings.length > 0) { %>
             <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
                 <% allListings.forEach(function(Listing) { %>
-                    <a href="/listing/<%= Listing._id %>" class="listing_link">
+                    <a href="/<%= Listing._id %>" class="listing_link">
                         <div class="card col">
                             <img src="<%= Listing.image.url %>" class="card-img-top" alt="listing-image" style="height:20rem">
                             <div class="card-body">
@@ -43,10 +43,10 @@
 </body>
 
 <script>
-    let textswitch = document.getElementById("flexSwitchCheckDefault");
-    textswitch.addEventListener("click", () => {
-        let taxinfo = document.getElementsByClassName("tax-info");
-        for (let info of taxinfo) {
+    const textSwitch = document.getElementById("flexSwitchCheckDefault");
+    textSwitch.addEventListener("click", () => {
+        const taxInfoElements = document.getElementsByClassName("tax-info");
+        for (let info of taxInfoElements) {
             info.style.display = (info.style.display !== "inline") ? "inline" : "none";
         }
     });

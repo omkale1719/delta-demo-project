@@ -13,7 +13,7 @@ module.exports.rendernewform=(req,res)=>{
         
         if (!req.file) {
             req.flash("success", "File upload failed. Please try again.");
-            return res.redirect("/listing/new");
+            return res.redirect("/new");
         }
 
         let url=req.file.path;
@@ -28,7 +28,7 @@ module.exports.rendernewform=(req,res)=>{
             newlisting.image={url,filename};
             await newlisting.save();
             req.flash("success", "नवीन लिस्टिंग तयार केले आहे!");
-            res.redirect("/listing");
+            res.redirect("/");
         } catch (error) {
             next(error); // एरर हँडलिंग मिडलवेअरकडे एरर पास करा
         }
@@ -54,7 +54,7 @@ module.exports.update=async(req,res)=>{
         await listing.save();
         }
     req.flash("success","Edited succesfully!");
-res.redirect(`/listing/${id}`);
+res.redirect(`/${id}`);
 // res.send("scucess");
 }
 
@@ -68,5 +68,5 @@ module.exports.delete=async(req,res)=>{
     const {id}=req.params;
     await Listing.findByIdAndDelete(id);
     req.flash("success","info is deleted!");
-    res.redirect("/listing");
+    res.redirect("/");
 }
