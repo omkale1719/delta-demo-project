@@ -119,7 +119,7 @@ app.use("/",user_route);
 
 
 
-
+const port = process.env.PORT || 3003;
 app.listen(port, () => {
     console.log(`${port} port is started`);
 });
